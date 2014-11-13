@@ -27,7 +27,8 @@ public class VisitorRequestTest {
         HttpServletRequest request = mock(HttpServletRequest.class);
         when(contextUtil.getRequest()).thenReturn(request);
         when(contextUtil.getVisitorUrl()).thenReturn("http://some-url.ro/some-uri");
-        when(request.getContextPath()).thenReturn("/some-uri-admin/some-context");
+        when(contextUtil.getAppUrl()).thenReturn("http://some-url.ro/some-uri-admin");
+        when(request.getRequestURL()).thenReturn(new StringBuffer("http://some-url.ro/some-uri-admin/some-context"));
         
         assertEquals("http://some-url.ro/some-uri/some-context", visitorRequest.getVisitUrl());
     }

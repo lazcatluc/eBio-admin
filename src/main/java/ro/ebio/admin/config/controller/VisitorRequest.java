@@ -22,9 +22,8 @@ public class VisitorRequest implements Serializable {
     private ContextUtil contextUtil;
     
     public String getVisitUrl() {
-        String contextPath = contextUtil.getRequest().getContextPath();
-        return contextUtil.getVisitorUrl() + 
-                contextPath.substring(contextPath.indexOf('/',1));
+        return contextUtil.getRequest().getRequestURL().toString()
+                .replace(contextUtil.getAppUrl(), contextUtil.getVisitorUrl());
     }
 
     /**
